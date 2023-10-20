@@ -1,9 +1,17 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/userReducer';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userData = useSelector(state => state.user.userData);
+
+  useEffect(() => {
+    if (!userData) return;
+    navigate(`/contacts`, { replace: true });
+  }, [userData, navigate]);
 
   const handleSubmit = event => {
     event.preventDefault();

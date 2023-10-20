@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginRequest, logoutRequest, registerRequest } from "service/api";
+import { currentRequest, loginRequest, logoutRequest, registerRequest, setToken } from "service/api";
 
 
 
@@ -32,6 +32,22 @@ export const logOutThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await logoutRequest();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const refreshUserThunk = createAsyncThunk(
+  'user/refreshUserThunk',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState()
+    const token = state.user.token;
+    if (!token) return
+    try {
+      setToken(token)
+      const data = await currentRequest()
+      console.log('data', data)
+      return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -93,6 +109,21 @@ const userSlice = createSlice({
         state.token = null;
       })
       .addCase(logOutThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // ==========================refresh below
+      .addCase(refreshUserThunk.pending, (state, action) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(refreshUserThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userData = action.payload;
+
+      })
+      .addCase(refreshUserThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOutThunk } from 'redux/userReducer';
+import { logOutThunk, refreshUserThunk } from 'redux/userReducer';
 // import Home from './pages/Home';
 
 const Layout = ({ children }) => {
@@ -12,6 +12,10 @@ const Layout = ({ children }) => {
   const handleLogOut = () => {
     dispatch(logOutThunk());
   };
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
+
   return (
     <>
       <header>

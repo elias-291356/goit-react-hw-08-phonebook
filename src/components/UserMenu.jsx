@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-const UserMenu = () => {
-  return (
-    <div>
-      {/* <p>mango@mail.com</p>
-      <button>Logout</button> */}
-    </div>
-  );
-};
+// const UserMenu = () => {
+//   return (
+//     <div>
+//       <p>mango@mail.com</p>
+//       <button>Logout</button>
+//     </div>
+//   );
+// };
 
-export default UserMenu;
+// export default UserMenu;
