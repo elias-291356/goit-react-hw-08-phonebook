@@ -2,13 +2,10 @@ import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOutThunk, refreshUserThunk } from 'redux/userReducer';
-// import Home from './pages/Home';
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const userData = useSelector(state => state.user.userData);
-  console.log(userData);
-
   const handleLogOut = () => {
     dispatch(logOutThunk());
   };
@@ -26,7 +23,12 @@ const Layout = ({ children }) => {
               <>
                 <Link to="/contacts">Contacts</Link>
                 <p>Hello, {userData.name}</p>
-                <button onClick={handleLogOut}>Log out</button>
+                <button
+                  onClick={handleLogOut}
+                  className="button is-danger is-light"
+                >
+                  Log out
+                </button>
               </>
             ) : (
               <>
@@ -34,8 +36,6 @@ const Layout = ({ children }) => {
                 <Link to="/register"> register</Link>
               </>
             )}
-
-            {/* <Link to="/contact"> contacts</Link> */}
           </ul>
         </nav>
       </header>

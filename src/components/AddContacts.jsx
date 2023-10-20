@@ -15,17 +15,29 @@ const AddContacts = () => {
   };
   return (
     <div>
-      <h2>Add contact</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="title is-3">Add contact</h2>
+      <form className="field" onSubmit={handleSubmit}>
         <label>
-          <span>Name:</span>
-          <input type="text" required minLength={3} name="contactName" />
+          <span className="title is-6">Name:</span>
+          <input
+            className="label"
+            type="text"
+            required
+            minLength={3}
+            name="contactName"
+          />
         </label>
         <label>
-          <span>Number:</span>
-          <input type="text" required minLength={3} name="contactNumber" />
+          <span className="title is-6">Number:</span>
+          <input
+            className="label"
+            type="text"
+            required
+            minLength={3}
+            name="contactNumber"
+          />
         </label>
-        <button>Add contact</button>
+        <button className="button is-success is-light">Add contact</button>
       </form>
     </div>
   );

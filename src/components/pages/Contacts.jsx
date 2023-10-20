@@ -1,4 +1,5 @@
 import AddContacts from 'components/AddContacts';
+import withAuthRedirect from 'HOC/withAuthRedirect';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContactsThunk } from 'redux/contactsReducer';
@@ -46,4 +47,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default withAuthRedirect(Contacts);

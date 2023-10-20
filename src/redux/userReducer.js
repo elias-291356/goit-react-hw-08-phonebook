@@ -8,7 +8,6 @@ export const registerThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const data = await registerRequest(formData);
-      console.log(data)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -20,7 +19,6 @@ export const loginThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const data = await loginRequest(formData);
-      console.log(data)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -46,7 +44,6 @@ export const refreshUserThunk = createAsyncThunk(
     try {
       setToken(token)
       const data = await currentRequest()
-      console.log('data', data)
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
