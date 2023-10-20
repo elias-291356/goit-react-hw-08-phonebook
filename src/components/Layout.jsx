@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
       <header>
         <nav>
           <ul>
-            <Link to="/">home</Link>
+            <Link to="/">home </Link>
             {userData ? (
               <>
                 <Link to="/contacts">Contacts</Link>
