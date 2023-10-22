@@ -18,7 +18,7 @@ const AddContacts = () => {
       <h2 className="title is-3">Add contact</h2>
       <form className="field" onSubmit={handleSubmit}>
         <label>
-          <span className="title is-6">Name:</span>
+          <p className="title is-6">Name:</p>
           <input
             className="label"
             type="text"
@@ -28,7 +28,7 @@ const AddContacts = () => {
           />
         </label>
         <label>
-          <span className="title is-6">Number:</span>
+          <p className="title is-6">Number:</p>
           <input
             className="label"
             type="text"

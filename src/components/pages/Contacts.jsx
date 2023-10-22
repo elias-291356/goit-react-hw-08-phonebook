@@ -31,10 +31,13 @@ const Contacts = () => {
           contacts.map(contact => {
             return (
               <li key={contact.id}>
-                <h3>{contact.name}</h3>
-                <p>
+                <h3 className="title is-4">{contact.name}</h3>
+                <p className="subtitle is-5">
                   {contact.number}{' '}
-                  <button onClick={() => handleDeleteContact(contact.id)}>
+                  <button
+                    class="button is-danger is-light"
+                    onClick={() => handleDeleteContact(contact.id)}
+                  >
                     &times;
                   </button>
                 </p>
